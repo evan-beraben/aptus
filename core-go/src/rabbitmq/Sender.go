@@ -1,8 +1,8 @@
 package rabbitmq
 
 import (
-	"../messages"
 	"encoding/json"
+	"github.com/evan-beraben/aptus/core-go/src/messages"
 	"github.com/streadway/amqp"
 	"log"
 )
@@ -45,7 +45,7 @@ func SendMessage(sender *SenderMq, message messages.Message) bool {
 	if err != nil{
 		log.Println(err)
 		log.Println("Failed to get channel")
-		sender.Conn = nill
+		sender.Conn = nil
 		return false
 	}
 
