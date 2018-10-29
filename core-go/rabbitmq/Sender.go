@@ -2,7 +2,7 @@ package rabbitmq
 
 import (
 	"encoding/json"
-	"github.com/evan-beraben/aptus/core-go/src/messages"
+	"github.com/evan-beraben/aptus/core-go/messages"
 	"github.com/streadway/amqp"
 	"log"
 )
