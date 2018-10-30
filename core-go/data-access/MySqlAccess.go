@@ -64,13 +64,11 @@ func ParseUrl(dbUrl string) (string, string) {
 
 }
 
-func ExecSQL(sql string){
+func ExecSQL(sql string) error{
 	_, err := _db.Exec(sql)
 
-	if err != nil{
-		log.Println(err)
-		return
-	}
+	log.Printf("Failed to execute sql:\n%s\n%s", sql, err)
+	return err;
 }
 
 func Select(t reflect.Type, from string, where string) (interface{}, error) {
