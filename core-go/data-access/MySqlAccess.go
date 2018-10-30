@@ -16,25 +16,25 @@ var _dbName string
 var _uname string
 var _pw string
 
-func Init(dbUrl string, uname string, pw string) {
+func Init(dbUrl string, uname string, pw string) error{
 	_host, _dbName = ParseUrl(dbUrl)
 	_uname = uname
 	_pw = pw
 
-	Connect()
+	return Connect()
 }
 
-func Connect() {
+func Connect() error {
 	log.Printf("Connecting to mysql %s", _host)
 	_db, _err = sql.Open("mysql", _uname+":"+_pw+"@tcp("+_host+")"+"/"+_dbName)
 
 	if _err != nil {
 		log.Println("Failed to connect to db")
-		return;
+		return _err
 	}
 
 	log.Println("Mysql connection success.")
-
+	return nil
 }
 
 func Close() {
