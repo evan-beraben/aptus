@@ -80,7 +80,7 @@ func Select(t reflect.Type, from string, where string) (interface{}, error) {
 	}
 
 
-	log.Println("Running query: " + sel)
+	//log.Println("Running query: " + sel)
 	rows, err := _db.Query(sel)
 
 	if err != nil {
