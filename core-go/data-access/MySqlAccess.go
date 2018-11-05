@@ -66,8 +66,7 @@ func ParseUrl(dbUrl string) (string, string) {
 
 func ExecSQL(sql string) error{
 	_, err := _db.Exec(sql)
-
-	log.Printf("Failed to execute sql:\n%s\n%s", sql, err)
+	if err != nil{log.Printf("Failed to execute sql:\n%s\n%s", sql, err)}
 	return err;
 }
 
