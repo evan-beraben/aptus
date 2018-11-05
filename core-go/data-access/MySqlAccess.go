@@ -65,8 +65,20 @@ func ParseUrl(dbUrl string) (string, string) {
 }
 
 func ExecSQL(sql string) error{
-	_, err := _db.Exec(sql)
-	if err != nil{log.Printf("Failed to execute sql:\n%s\n%s", sql, err)}
+	r, err := _db.Exec(sql)
+	if err != nil{
+		log.Printf("Failed to execute sql:\n%s\n%s", sql, err)
+		return err
+	}
+
+	rowsAffected, err := r.RowsAffected()
+	if err != nil{
+		log.Printf("Failed to get result for sql:\n%s\n%s", sql, err)
+		return err
+	}
+
+	log.Printf("%s\n>%d Rows affected\n", sql, rowsAffected)
+
 	return err;
 }
 
