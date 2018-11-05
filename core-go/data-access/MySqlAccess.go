@@ -77,7 +77,7 @@ func ExecSQL(sql string) error{
 		return err
 	}
 
-	log.Printf("%s\n>%d Rows affected\n", sql, rowsAffected)
+	log.Printf("%s\n%d Rows affected\n", sql, rowsAffected)
 
 	return err;
 }
