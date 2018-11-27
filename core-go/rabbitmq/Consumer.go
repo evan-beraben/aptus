@@ -53,7 +53,7 @@ func StartReceive(c *Consumer){
 
 	msgs, err := ch.Consume(c.Queue,"",true,false,false, false, nil)
 	if err != nil {
-		log.Println("Faield to consume, creating queue")
+		log.Println("Failed to consume, creating queue")
 		ch.QueueDeclare(c.Queue, true, false, false,false,nil)
 		msgs, err = ch.Consume(c.Queue,"",true,false,false, false, nil)
 		if err != nil {
