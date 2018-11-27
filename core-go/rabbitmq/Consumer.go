@@ -49,17 +49,12 @@ func StartReceive(c *Consumer){
 	}
 
 	defer ch.Close()
-	//ch.QueueDeclare(c.Queue, false, false, false,false,nil)
+	ch.QueueDeclare(c.Queue, true, false, false,false,nil)
 
 	msgs, err := ch.Consume(c.Queue,"",true,false,false, false, nil)
 	if err != nil {
-		log.Println("Failed to consume, creating queue")
-		ch.QueueDeclare(c.Queue, true, false, false,false,nil)
-		msgs, err = ch.Consume(c.Queue,"",true,false,false, false, nil)
-		if err != nil {
-			log.Printf("Failed to consume: %s" + c.Queue)
-			return
-		}
+		log.Printf("Failed to consume: %s" + c.Queue)
+		return
 	}
 
 	log.Printf("Waiting for messages on %s", c.Queue)
