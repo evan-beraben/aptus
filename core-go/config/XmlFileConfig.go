@@ -30,7 +30,7 @@ type MQServerProperties struct{
 
 func GetConfig() (*ServerConfig){
 
-	file,err := os.Open("../conf/server.xml")
+	file,err := os.Open("./server.xml")
 	if err != nil{
 		return nil
 	}
